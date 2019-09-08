@@ -1,0 +1,12 @@
+composer.phar
+composer.lock
+phpunit.xml
+.phpunit.result.cache
+
+/.idea/
+/bin/
+/build/
+/vendor/
+
+.DS_Store
+Thumbs.db
