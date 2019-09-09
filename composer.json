@@ -31,7 +31,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SN\\Bundle\\NotificationsBundle\\": ""
+            "SN\\Bundle\\NotificationsBundle\\": "src/"
         }
     }
 }
