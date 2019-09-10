@@ -18,7 +18,7 @@ class FunctionalTest extends TestCase
 {
     public function testServiceWiring(): void
     {
-        $kernel = new TestKernel('test', true);
+        $kernel = new TestKernel();
         $kernel->boot();
         $container = $kernel->getContainer();
         $this->assertTrue($container->has('sn_notifications.notification_sender'));
