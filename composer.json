@@ -11,10 +11,10 @@
     ],
     "require": {
         "php": "^7.1.3",
-        "snebes/notifications": "*@dev",
-        "symfony/framework-bundle": "^3.4|^4.0"
+        "snebes/notifications": "*@dev"
     },
     "require-dev": {
+        "symfony/framework-bundle": "^3.4|^4.0",
         "symfony/phpunit-bridge": "^3.0|^4.0"
     },
     "autoload": {
