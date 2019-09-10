@@ -6,7 +6,7 @@ phpunit.xml
 /.idea/
 /bin/
 /build/
-/tests/cache/
+/var/
 /vendor/
 
 .DS_Store
