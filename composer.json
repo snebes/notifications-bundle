@@ -14,8 +14,8 @@
         "snebes/notifications": "*@dev"
     },
     "require-dev": {
-        "symfony/framework-bundle": "^3.4|^4.0",
-        "symfony/phpunit-bridge": "^3.0|^4.0"
+        "symfony/framework-bundle": "^3.4 || ^4.0",
+        "symfony/phpunit-bridge": "^3.4 || ^4.0"
     },
     "autoload": {
         "psr-4": {
