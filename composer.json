@@ -1,12 +1,8 @@
 {
     "name": "snebes/notifications-bundle",
-    "description": "This bundle aims to provide a centralized notification component for Symfony",
+    "description": "Unofficial Symfony Notifications Bundle",
     "type": "symfony-bundle",
-    "keywords": ["Symfony", "bundle", "notifications", "email", "sms", "doctrine"],
-    "homepage": "https://github.com/snebes/notifications-bundle",
     "license": "MIT",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "authors": [
         {
             "name": "Steve Nebes",
@@ -15,23 +11,26 @@
     ],
     "require": {
         "php": "^7.1.3",
-        "snebes/notifications": "*",
-        "symfony/framework-bundle": "~3.4|^4.0"
+        "snebes/notifications": "*@dev",
+        "symfony/framework-bundle": "^3.4|^4.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.5|^8.0",
-        "doctrine/orm": "^2.6"
-    },
-    "config": {
-        "bin-dir": "bin",
-        "preferred-install": {
-            "*": "dist"
-        },
-        "sort-packages": true
+        "symfony/phpunit-bridge": "^3.0|^4.0"
     },
     "autoload": {
         "psr-4": {
             "SN\\Bundle\\NotificationsBundle\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SN\\Bundle\\NotificationsBundle\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
     }
 }

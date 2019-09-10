@@ -1,16 +1,45 @@
 language: php
-php:
-    - '7.1'
-    - '7.2'
-    - '7.3'
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+        - $HOME/symfony-bridge/.phpunit
+
+env:
+    global:
+        - PHPUNIT_FLAGS="-v"
+        - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
+
 matrix:
-    include:
-        - php: '7.1'
-          env: SYMFONY_VERSION="symfony/lts:^3"
     fast_finish: true
-before_script:
-    - if [ "$SYMFONY_VERSION" != "" ]; then travis_wait composer require --no-update $SYMFONY_VERSION; fi;
-    - 'composer update --prefer-dist --no-interaction $COMPOSER_FLAGS'
+    include:
+        # Minimum supported dependencies with the latest and oldest PHP version
+        - php: 7.2
+          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="max[self]=0"
+        - php: 7.1
+          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="max[self]=0"
+
+        # Test the latest stable release
+        - php: 7.1
+        - php: 7.2
+        - php: 7.3
+          env: COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
+
+            # Test LTS versions. This makes sure we do not use Symfony packages with version greater
+            # than 3 respectively. Read more at https://github.com/symfony/lts
+        - php: 7.1
+          env: DEPENDENCIES="symfony/lts:^3"
+
+before_install:
+    - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
+    - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
+    - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
+
+install:
+    - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
+    - ./vendor/bin/simple-phpunit install
+
 script:
-    - 'composer validate --no-check-lock --strict'
-    - 'phpunit --configuration phpunit.xml.dist --coverage-text'
+    - composer validate --strict --no-check-lock
+    - ./vendor/bin/simple-phpunit $PHPUNIT_FLAGS

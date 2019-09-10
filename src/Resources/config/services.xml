@@ -1,28 +1,13 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <container xmlns="http://symfony.com/schema/dic/services"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-    <parameters>
-        <parameter key="sn_notifications.database.notification_class">SN\Bundle\NotificationsBundle\Entity\Notification</parameter>
-    </parameters>
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="SN\Notifications\NotificationSender" class="SN\Notifications\NotificationSender">
+        <service id="sn_notifications.notification_sender" class="SN\Notifications\NotificationSender" public="true">
             <argument type="service" id="event_dispatcher" />
         </service>
-
-        <!-- channels -->
-        <service id="SN\Notifications\Channel\DatabaseChannel" class="SN\Notifications\Channel\DatabaseChannel">
-            <argument>%sn_notifications.database.notification_class%</argument>
-            <tag name="kernel.event_subscriber" />
-        </service>
-        <service id="SN\Notifications\Channel\MailChannel" class="SN\Notifications\Channel\MailChannel">
-            <argument type="service" id="SN\Notifications\Mailer\SwiftMailerMailer" />
-        </service>
-
-        <!-- mailer -->
-        <service id="SN\Notifications\Mailer\SwiftMailerMailer" class="SN\Notifications\Mailer\SwiftMailerMailer">
-            <argument type="service" id="mailer" />
-        </service>
+        <service id="SN\Notifications\NotificationSender" alias="sn_notifications.notification_sender" public="false" />
     </services>
 </container>
