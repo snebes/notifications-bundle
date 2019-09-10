@@ -15,11 +15,11 @@ matrix:
     fast_finish: true
     include:
         # Minimum supported dependencies with the latest and oldest PHP version
-        - php: 7.3
+        - php: 7.1
           env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="max[self]=0"
         - php: 7.2
           env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="max[self]=0"
-        - php: 7.1
+        - php: 7.3
           env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="max[self]=0"
 
         # Test the latest stable release
@@ -28,10 +28,18 @@ matrix:
         - php: 7.3
           env: COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
 
-            # Test LTS versions. This makes sure we do not use Symfony packages with version greater
-            # than 3 respectively. Read more at https://github.com/symfony/lts
+        # Test LTS versions. This makes sure we do not use Symfony packages with version greater
+        # than 3 respectively. Read more at https://github.com/symfony/lts
         - php: 7.1
           env: DEPENDENCIES="symfony/lts:^3"
+
+        # Latest commit to master
+        - php: 7.3
+          env: STABILITY="dev"
+
+    allow_failures:
+        # Dev-master is allowed to fail.
+        - env: STABILITY="dev"
 
 before_install:
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
