@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="SN\Bundle\NotificationsBundle\Entity\Notification" table="sn_notification">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="createdAt" column="created_at" type="datetime" />
+        <field name="notifiableId" column="notifiable_id" type="string" length="64" />
+        <field name="notifiableType" column="notifiable_type" type="string" length="255" />
+        <field name="readAt" column="read_at" type="datetime" nullable="true" />
+        <field name="data" column="data" type="json" nullable="true" />
+
+        <indexes>
+            <index name="notifiable_idx" columns="notifiable_id,notifiable_type" />
+        </indexes>
+    </entity>
+</doctrine-mapping>

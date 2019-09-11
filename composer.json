@@ -11,12 +11,21 @@
     ],
     "require": {
         "php": "^7.1.3",
-        "snebes/notifications": "*@dev"
+        "snebes/notifications": "^v1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.5 || ^8.0",
-        "symfony/framework-bundle": "^3.4 || ^4.0",
-        "symfony/phpunit-bridge": "^3.4 || ^4.0"
+        "doctrine/doctrine-bundle": "^1.11",
+        "doctrine/orm": "^2.0",
+        "phpunit/phpunit": "^7.5|^8.0",
+        "symfony/console": "^3.4|^4.0",
+        "symfony/framework-bundle": "^3.4|^4.0",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/phpunit-bridge": "^3.4|^4.0",
+        "symfony/swiftmailer-bundle": "^3.0"
+    },
+    "suggest": {
+        "doctrine/doctrine-bundle":  "Allows database channel",
+        "symfony/swiftmailer-bundle": "Allows email channel"
     },
     "autoload": {
         "psr-4": {

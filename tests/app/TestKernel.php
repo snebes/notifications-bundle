@@ -12,6 +12,7 @@ namespace SN\Bundle\NotificationsBundle\Tests\app;
 
 use SN\Bundle\NotificationsBundle\SNNotificationsBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Bundle\MakerBundle\MakerBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
@@ -27,6 +28,7 @@ class TestKernel extends Kernel
     {
         return [
             new FrameworkBundle(),
+            new MakerBundle(),
             new SNNotificationsBundle(),
         ];
     }
