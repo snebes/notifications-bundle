@@ -12,5 +12,20 @@
         <service id="sn_notifications.maker.make_notification" class="SN\Bundle\NotificationsBundle\Maker\MakeNotification" public="true">
             <tag name="maker.command" />
         </service>
+
+        <service id="sn_notifications.channel.database_channel" class="SN\Notifications\Channel\DatabaseChannel" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" on-invalid="null" />
+            <argument>SN\Bundle\NotificationsBundle\Entity\Notification</argument>
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="sn_notifications.channel.mail_channel" class="SN\Notifications\Channel\MailChannel" public="false">
+            <argument type="service" id="sn_notifications.mailer.swiftmailer_mailer" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="sn_notifications.mailer.swiftmailer_mailer" class="SN\Notifications\Mailer\SwiftMailerMailer" public="false">
+            <argument type="service" id="swiftmailer.mailer" on-invalid="null" />
+        </service>
     </services>
 </container>
