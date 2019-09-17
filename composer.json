@@ -2,6 +2,7 @@
     "name": "snebes/notifications-bundle",
     "description": "Unofficial Symfony Notifications Bundle",
     "type": "symfony-bundle",
+    "keywords": ["notifications", "email", "sms", "doctrine", "symfony"],
     "license": "MIT",
     "authors": [
         {
