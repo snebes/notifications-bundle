@@ -10,6 +10,8 @@
 The `snebes/notifications-bundle` provides a [snebes/notifications](https://www.github.com/snebes/notifications) integration for your Symfony projects.
 Notifications is an abstraction layer, inspired by [Laravel](https://laravel.com), which allows you to easily add support for email and web-interface messaging. 
 
+A demo Symfony application with this bundle pre-installed is available. Check out [snebes/notifications-demo](https://github.com/snebes/notifications-demo).
+
 ## Prerequisites
 
 This bundle requires Symfony 3.4+ and utilized `doctrine/doctrine-bundle` and `symfony/swiftmailer-bundle` to provide notifications.
