@@ -2,21 +2,15 @@
 
 namespace <?= $namespace; ?>;
 
+use SN\Notifications\Contracts\ArrayableInterface;
 use SN\Notifications\Contracts\EmailInterface;
+use SN\Notifications\Contracts\MailableInterface;
 use SN\Notifications\Contracts\NotifiableInterface;
 use SN\Notifications\Contracts\NotificationInterface;
 use SN\Notifications\Email\Email;
 
-class <?= $class_name ?> implements NotificationInterface
+class <?= $class_name ?> implements NotificationInterface, ArrayableInterface, MailableInterface
 {
-    /**
-     * Create a new notification instance.
-     */
-    public function __construct()
-    {
-        //
-    }
-
     /**
      * Get the notification's delivery channels.
      *
@@ -26,7 +20,7 @@ class <?= $class_name ?> implements NotificationInterface
      */
     public function via(NotifiableInterface $notifiable): array
     {
-        return ['mail'];
+        return ['database', 'mail'];
     }
 
     /**
