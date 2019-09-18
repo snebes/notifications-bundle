@@ -26,7 +26,7 @@ final class MakeNotification extends AbstractMaker
 {
     public static function getCommandName(): string
     {
-        return 'make:notification';
+        return 'make:sn:notification';
     }
 
     /**
