@@ -1,6 +1,6 @@
 {
     "name": "snebes/notifications-bundle",
-    "description": "Unofficial Symfony Notifications Bundle",
+    "description": "A snebes/notifications bundle integration for Symfony projects",
     "type": "symfony-bundle",
     "keywords": ["notifications", "email", "sms", "doctrine", "symfony"],
     "license": "MIT",
